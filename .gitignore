@@ -1,4 +1,6 @@
 build
 bin/
 build/
+dist/
+andrew.yahner.properties
 \#*#
