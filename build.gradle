@@ -5,13 +5,19 @@ repositories {
   mavenCentral()
 }
 
+configurations {
+    releaseJars
+}
+
 dependencies {
   compile group: 'commons-io', name: 'commons-io', version: '2.0'
+  releaseJars group: 'commons-io', name: 'commons-io', version: '2.0'
 }
 
 sourceCompatibility = 1.8
 version = '1.0'
 jar {
+  from configurations.releaseJars.collect { it.isDirectory() ? it : zipTree(it) }
   manifest {
     attributes 'Implementation-Title': 'Fortune',
       'Implementation-Version': version,
